@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:52 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/04 22:42:35 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/04 23:40:07 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void        init_stack_a(t_node **stack_a, t_all *data);
 long long 	ft_long_atoi(const char *str);
 void        printArray(int *arr, int count);
 int         parse(t_all *data, char **argv);
-void        sa(t_node **a);
+// void        sa(t_node **a);
 void        sb(t_node **b);
 void        ss(t_node **a, t_node **b);
 void        pa(t_node **a, t_node **b);
