@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:21:57 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/04 23:06:04 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/05 04:11:46 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void    init_stack_a(t_node **stack_a, t_all *data)
 
     while (++i < data->count)
     {
-        // (*stack_a) = ft_new(data->unsorted[data->count - i - 1]);
         (*stack_a) = ft_new(data->unsorted[i]);
         printf("%i\n", (*stack_a)->content);
         stack_a = &(*stack_a)->next;

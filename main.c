@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:34 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/04 23:08:37 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/05 04:50:44 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,14 @@ int main(int args, char *argv[])
         // sa(&stack_a);
         stack_b->content = 7;
         stack_b->next = NULL;
-        sa(&stack_a);
+        ra(&stack_a);
+        int i = 0;
+        while (i < 9)
+        {
+            printf("stack_a->content %i\n", stack_a->content);
+            stack_a = stack_a->next;
+            printf("%i\n", i++);
+        } 
         // printf("es stacki mej verjinn  em%i\n", (stack_a)->next->content);
         // printf("es stacki topn em%i\n", (stack_a)->content);
         // (stack_a) = (stack_a)->next;

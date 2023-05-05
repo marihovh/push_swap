@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:06:56 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/04 23:40:03 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/05 05:02:44 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,33 @@ void pb(t_node **a, t_node **b)
 
 void ra(t_node **a)
 {
-  t_node *tmp;
-
-  tmp = *a;
-  if (!(*a))
-    return ;
+  // t_node *tmp;
+  // t_node *first;
   
+  // if (!(*a))
+  //   return ;
+  // tmp = (*a);
+  // first = (*a);
+  // while ((*a)->next != NULL)
+	// {
+	// 	(*a) = (*a)->next;
+	// }
+  // (*a)->next = tmp;
+  // tmp->next = NULL;
+  // first = tmp;
+  // // tmp = (*a);
+
+  t_node *first;
+  t_node *last;
+
+  first = *a;
+  last = *a;
+  while (last->next != NULL)
+    last = last->next;
+  *a = first->next;
+  first->next = NULL;
+  last->next = first;
+  printf("ra\n");
 }
+
+void rra(t_node )
