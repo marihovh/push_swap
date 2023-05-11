@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 05:05:02 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/04 05:39:38 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/11 09:54:18 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    cpy_array(t_all *data)
         data->sorted[i] = data->unsorted[i];
 }
 
-int parse(t_all *data, char **argv)
+void parse(t_all *data, char **argv)
 {
     int i;
     char *str;
@@ -57,21 +57,22 @@ int parse(t_all *data, char **argv)
     while (str[++i])
     {
         if (!((str[i] >= '0' && str[i] <= '9') || str[i] == '-' || str[i] == '+') && !(str[i] == ' '))
-                return (0);
+                error_msg("Error!\n");
         if (str[i] == '-' || str[i] == '+')
         {
             if (str[i - 1] != ' ' && i != 0)
-                return (0);
+                error_msg("Error!\n");
             if (str[i + 1] == '-' || str[i + 1] == '+' || !str[i + 1] || str[i + 1] == ' ')
-                return (0);
+                error_msg("Error!\n");
         }
     }
-    if (!create_array(data, str) || !dublicate(data) || ft_sorted(data))
-        return (0);
+    if (!create_array(data, str) || !dublicate(data))
+        error_msg("Error!\n");
+    if (ft_sorted(data))
+        error_msg("");
     cpy_array(data);
     quicksort(data->sorted, 0, data->count - 1);
     add_idx(data);
-    return (1);
 }
 
 int ft_sorted(t_all *data)
@@ -131,7 +132,6 @@ int dublicate(t_all *data)
     int j;
 
     i = 1;
-    // printf ("%i",data->count);
     while (i < data->count)
     {
         j = 0;
@@ -152,6 +152,8 @@ void swap(int* a, int* b) {
     *b = tmp;
 }
 
+
+
 int quick_help(int arr[], int min, int max) {
     int pivot = arr[max];  
     int i = (min - 1);
@@ -167,6 +169,8 @@ int quick_help(int arr[], int min, int max) {
     swap(&arr[i + 1], &arr[max]);
     return (i + 1);
 }
+
+
 
 void quicksort(int arr[], int min, int max) {
     if (min < max) {

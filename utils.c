@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:41 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/03 02:27:13 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/11 09:53:46 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,35 @@ long long 	ft_long_atoi(const char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 		num = (num * 10) + (str[i++] - 48);
 	return (num * minus);
+}
+
+void printList(t_node *stack_a, t_node *stack_b)
+{
+	while (stack_a != NULL || stack_b != NULL)
+	{
+		if (!stack_a && stack_b)
+		{
+			printf("       %i\n", stack_b->content);
+			stack_b = stack_b->next;
+		}
+		else if(stack_a && !stack_b)
+		{
+			printf("%i       \n", stack_a->content);
+			stack_a = stack_a->next;
+		}
+		else
+		{
+			printf("%i       %i\n", stack_a->content, stack_b->content);
+			stack_a = stack_a->next;
+			stack_b = stack_b->next;
+		}
+	}
+	printf("_       _\na       b\n");
+}
+
+void error_msg(char *str)
+{
+	if (str)
+		ft_printf(str);
+	exit (1);
 }
