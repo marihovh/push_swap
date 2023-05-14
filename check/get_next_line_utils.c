@@ -1,16 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 02:21:06 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 03:59:47 by marihovh         ###   ########.fr       */
+/*   Created: 2023/02/16 05:56:00 by marihovh          #+#    #+#             */
+/*   Updated: 2023/05/14 08:06:06 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
+
+
+char	*ft_strchr(const char *str, int c)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == c)
+			return ((char *)str + i);
+		i++;
+	}
+	return (0);
+}
 
 char	*ft_strjoin(char *stat, char *buffer)
 {

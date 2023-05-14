@@ -1,13 +1,19 @@
 NAME=push_swap
+CHECKER=checker
 SRC=$(wildcard *.c)
+SRCB = $(filter-out main.c, $(SRC)) $(wildcard check/*.c)  
 OBJ=$(SRC:.c=.o)
+OBJB=$(SRCB:.c=.o)
 CC= gcc
 LIBFT=lib/libft.a
 PRINTF=printf/libftprintf.a
 CFLAGS= -Wall -Werror -Wextra
 RM = rm -rf
 
-all : comp $(NAME)
+all : comp $(NAME) $(CHECKER)
+
+$(CHECKER) : $(OBJB)
+	$(CC) $(CFLAGS) $(OBJB) $(PRINTF) $(LIBFT) -o $(CHECKER)
 
 comp : 
 	cd ./lib && make
@@ -23,11 +29,13 @@ fclean : clean
 	cd ./lib && make fclean
 	cd ./printf && make fclean
 	$(RM) $(NAME)
+	$(RM) $(CHECKER)
 
 clean :
 	cd ./lib && make clean
 	cd ./printf && make clean
 	$(RM) $(OBJ)
+	$(RM) $(OBJB)
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:34 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/11 10:22:44 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/14 10:01:30 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,17 @@ int main(int args, char *argv[])
     {
         parse(data, argv);
         init_stack_a(&stack_a, data);
+        // system("leaks push_swap");
+		// pause();
         stack_b = NULL;
-        numeric(data, &stack_a, &stack_b);
-        printf("before\n\n");
-        printList(stack_a, stack_b);
-        printf("\n\nafter\n\n");
-        but_b(data, &stack_a, &stack_b);
-        to_a(data, &stack_a, &stack_b);
-        printList(stack_a, stack_b);
-        printf("\n\n\nbooo data->step %i\n\n\n\n", data->step);
+        if (args >= 3 && args <= 6)
+            numeric(data, &stack_a, &stack_b);
+        else
+        {
+            but_b(data, &stack_a, &stack_b);
+            to_a(data, &stack_a, &stack_b);
+        }
+		printf("%i\n", data->step);
     }
     return (0);
 }

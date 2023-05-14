@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 05:05:02 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/11 09:54:18 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/14 09:39:03 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void parse(t_all *data, char **argv)
                 error_msg("Error!\n");
         }
     }
+    // free(str);
     if (!create_array(data, str) || !dublicate(data))
         error_msg("Error!\n");
     if (ft_sorted(data))
@@ -105,15 +106,15 @@ void    add_idx(t_all *data)
 }
 int create_array(t_all *data, char *str)
 {
-    long     i; 
-    char    **splited;
-    long int num;
+    long		i; 
+    char		**splited;
+    long int	num;
 
     i = 0;
     data->count = ft_word_cnt(str, ' ');
     data->unsorted = malloc(sizeof(int) * data->count);
     splited = ft_split(str, ' ');
-    while(splited[i])
+    while (splited[i])
     {
         num = ft_long_atoi(splited[i]);
         if (num >= -2147483648 && num <= 2147483647)
@@ -122,6 +123,12 @@ int create_array(t_all *data, char *str)
             return (0);
         i++;
     }
+	i = -1;
+	while (splited && splited[++i])
+	{
+		free(splited[i]);
+		splited[i] = NULL;
+	}
     free(splited);
     return (1);
 }

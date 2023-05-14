@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:21:57 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/11 09:44:51 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/14 10:01:00 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void    init_stack_a(t_node **stack_a, t_all *data)
 
 int init_n(t_all *data)
 {
-    int num;
+    int num = 0;
 
-    if (data->count >= 100 && data->count < 500)
-        num = 15;
+    if (data->count >= 6 && data->count <= 50)
+        num = data->count / 4;
+    else if (data->count >= 100 && data->count < 500)
+        num = data->count / 8;
     else if (data->count >= 500)
-        num = 30;
-    else
-        num = data->count;
+        num = data->count / 16;
     return (num);
 }
 
@@ -54,7 +54,6 @@ void but_b(t_all *data, t_node **a, t_node **b)
 {
     int n;
     int i;
-    (void)data;
     data->step = 0;
 
     i = 0;
@@ -118,6 +117,7 @@ void to_a(t_all *data, t_node **a, t_node **b)
 {
     int max_id;
     int i;
+	data->step = 0;
     
     int count = data->count;
     while ((*b) != NULL)
@@ -127,22 +127,22 @@ void to_a(t_all *data, t_node **a, t_node **b)
         if (max_id <= count / 2)
         {
             while (max_id-- > 0)
-            {
+			{
                 rb(b);
-                data->step++;
-            }
+				data->step++;
+			}
         }
         else
         {
             i = count - max_id;
             while (i-- > 0)
-            {
+			{
                 rrb(b);
-                data->step++;
-            }
+				data->step++;
+			}
         }
         pa(a, b);
-        data->step++;
+		data->step++;
         count--;
     }
 }
