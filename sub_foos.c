@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 19:06:56 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 10:10:35 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:19:40 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ void rb(t_node **b)
   *b = first->next;
   first->next = NULL;
   last->next = first;
+  first = NULL;
+  last = NULL;
   ft_printf("rb\n");
 }
 

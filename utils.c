@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:41 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/11 09:53:46 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:33:21 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void printList(t_node *stack_a, t_node *stack_b)
 void error_msg(char *str)
 {
 	if (str)
-		ft_printf(str);
+		ft_putstr_fd(str, 2);
 	exit (1);
 }

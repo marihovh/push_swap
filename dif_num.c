@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 10:01:04 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 09:58:26 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 03:27:19 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ int sorted(t_node *a)
     return (1);
 }
 
-void tree(t_node **a)
+void tree(int num, t_node  **a)
 {
-	if ((*a)->content == 0)
+	if ((*a)->content == num - 3)
 	{
 		rra(a);
 		sa(a);
 		return ;
 	}
-	if ((*a)->content == 1)
+	if ((*a)->content == num - 2)
 	{
-		if ((*a)->next->content == 0)
+		if ((*a)->next->content == num - 3)
 			sa(a);
 		else
 			rra(a);
 		return ;
 	}
-	if ((*a)->content == 2)
+	if ((*a)->content == num - 1)
 	{
-		if ((*a)->next->content == 0)
+		if ((*a)->next->content == num - 3)
 			ra(a);
 		else
 		{
@@ -58,17 +58,18 @@ void tree(t_node **a)
 	}
 }
 
-void four(t_node **a, t_node **b)
+void four(int num, t_node **a, t_node **b)
 {
     init_id(a);
     int min = find_min(a);
     while ((*a)->id != min)
-    {
         rra(a);
-    }
-    pb(a, b);
-    tree(a);
-    pa(a, b);
+	if (sorted(*a) != 1)
+	{
+    	pb(a, b);
+    	tree(num, a);
+    	pa(a, b);
+	}
 }
 
 void five(t_node **a, t_node **b)
@@ -87,9 +88,12 @@ void five(t_node **a, t_node **b)
         while (i-- > 0)
             rra(a);
     }
-    pb(a, b);
-    four(a, b);
-    pa(a, b);
+	if (sorted(*a) != 1)
+	{
+    	pb(a, b);
+    	four(5, a, b);
+    	pa(a, b);
+	}
 }
 
 int find_min(t_node **a)
@@ -119,9 +123,9 @@ void numeric(t_all *data, t_node **a, t_node **b)
     if (data->count == 2)
         two(a);
     else if (data->count == 3)
-        tree(a);
+        tree(data->count, a);
     else if (data->count == 4)
-        four(a, b);
-    else 
+        four(4, a, b);
+    else if (data->count == 5)
         five(a, b);
 }

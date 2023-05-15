@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 05:05:02 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 09:39:03 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:35:26 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ void parse(t_all *data, char **argv)
                 error_msg("Error!\n");
         }
     }
-    // free(str);
     if (!create_array(data, str) || !dublicate(data))
-        error_msg("Error!\n");
+        error_msg("Error\n");
+    free(str);
     if (ft_sorted(data))
-        error_msg("");
+        exit(2);
     cpy_array(data);
     quicksort(data->sorted, 0, data->count - 1);
     add_idx(data);

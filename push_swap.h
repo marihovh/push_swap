@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 23:28:52 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 09:27:35 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/14 21:55:05 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void		init_id(t_node **b);
 void		to_a(t_all *data, t_node **a, t_node **b);
 void		error_msg(char *str);
 void		two(t_node **a);
-void		tree(t_node **a);
+void tree(int num, t_node  **a);
 void		roto(char *str);
 void		numeric(t_all *data, t_node **a, t_node **b);
 int			find_min(t_node **a);

@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 13:21:57 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 10:01:00 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 04:19:58 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    init_stack_a(t_node **stack_a, t_all *data)
     
     i = -1;
 
+    // system("leaks push_swap");
     while (++i < data->count)
     {
         (*stack_a) = ft_new(data->unsorted[i]);
@@ -65,19 +66,14 @@ void but_b(t_all *data, t_node **a, t_node **b)
             pb(a, b);
             rb(b);
             i++;
-            data->step += 2;
         }
         else if((*a)->content <= i + n)
         {
             pb(a, b);
-            data->step++;
             i++;
         }
         else
-        {
             ra(a);
-            data->step++;
-        }
     }
     init_id(b);
 }
@@ -117,7 +113,6 @@ void to_a(t_all *data, t_node **a, t_node **b)
 {
     int max_id;
     int i;
-	data->step = 0;
     
     int count = data->count;
     while ((*b) != NULL)
@@ -127,22 +122,15 @@ void to_a(t_all *data, t_node **a, t_node **b)
         if (max_id <= count / 2)
         {
             while (max_id-- > 0)
-			{
                 rb(b);
-				data->step++;
-			}
         }
         else
         {
             i = count - max_id;
             while (i-- > 0)
-			{
                 rrb(b);
-				data->step++;
-			}
         }
         pa(a, b);
-		data->step++;
         count--;
     }
 }

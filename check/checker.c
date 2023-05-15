@@ -6,7 +6,7 @@
 /*   By: marihovh <marihovh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 08:01:55 by marihovh          #+#    #+#             */
-/*   Updated: 2023/05/14 10:08:07 by marihovh         ###   ########.fr       */
+/*   Updated: 2023/05/15 02:50:03 by marihovh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,9 @@ void	implement(char *str, t_node **a, t_node **b)
 	else if (ft_strncmp("rra\n", str, 4) == 0)
 		rra(a);
 	else if (ft_strncmp("rrb\n", str, 4) == 0)
-		rrb(a);
+		rrb(b);
 	else if (ft_strncmp("rrr\n", str, 4) == 0)
 		rrr(a, b);
-	else
-		error_msg("Error!\n");
 }
 
 
@@ -61,16 +59,18 @@ int main (int args, char *argv[])
 		parse(data, argv);
 		init_stack_a(&stack_a, data);
 		if (!stack_a)
-			return (0);	
+			return (0);
+			// printList(stack_a, stack_b);
 		str = get_next_line(0);
 		while (str != NULL)
 		{
 			implement(str, &stack_a, &stack_b);
 			str = get_next_line(0);
 		}
+			// printList(stack_a, stack_b);
 		if (sorted(stack_a) == 1)
 			printf("OK\n");
-		else 
+		else
 			printf("KO\n");
 	}
 	return (0);
